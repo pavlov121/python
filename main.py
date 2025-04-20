@@ -1993,8 +1993,8 @@ import random
 # fio = input("Введите ФИО: ").split()
 # print(f"{fio[0]} {fio[1][0]}. {fio[2][0]}.")
 
-lst = input("Введите числа через пробел: ").split()
-print(lst)
-lst = map(int, lst)
-print(sum(lst))
+# lst = input("Введите числа через пробел: ").split()
+# print(lst)
+# lst = map(int, lst)
+# print(sum(lst))
 
