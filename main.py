@@ -771,6 +771,7 @@
 
 
 import random
+import re
 
 # lst = [random.randint(0, 100) for i in range(10)]
 # print(lst)
@@ -1997,4 +1998,173 @@ import random
 # print(lst)
 # lst = map(int, lst)
 # print(sum(lst))
+#
+# import re
+
+# s = "Я ищу совпадения в 2025 году. \"И я их найду в 2 счё-та\". H.ello_World."
+# # reg = "\\."  # Экранирование точки
+# # reg = r"\."  # Экранирование точки
+# # reg = r"[оя]"
+# # reg = r"[оя]"
+# reg = r"^\w+\s\w+"  #  Поиск от начала
+# reg = r"\w+\.$"  # Поиск в конце
+# print(re.f
+# indall(reg, s))
+# # print(re.findall(reg, s))  # возвращает список, содержащий все совпадения
+# # print(re.search(reg, s))  # <re.Match object; span=(15, 16), match='я'> Месторасположения первого совпадения с шаблоном
+# # print(re.search(reg, s).span())  # (15, 16) - Может выдать ошибку
+# # print(re.search(reg, s).start())  # 15
+# # print(re.search(reg, s).end())  # 16
+# # print(re.search(reg, s).group())  # я
+# #
+# # print(re.match(reg, s))  # Ищет совпадение от начало строки, Месторасположения первого совпадения с шаблоном в нач строк
+# # print(re.split(reg, s))  # возвращает список в котором строка разбита по шаблону
+# # print(re.sub(reg, "!", s, 1))  # Замена точки на ! Поиск и замена
+# #
+# # reg = r"[205]"
+# # reg = r"[12][0-9][0-9][0-9]"
+# reg = r"[A-Za-z.]"
+# reg = r"[A-Z\[a-z\].-]"
+# reg = r"[^0-9]"
+# reg = r"\AЯ ищу"
+# reg = r"\w+"
+# reg = r"20*"
+# # print(re.findall(reg, s))
+#
+#
+# # st = "Час в 24-часовом формате от 00 до 23. 2021T21:45. Минуты, в диапазоне от 00 до 59. 2021-06015T01:09"
+# # reg1 = "[0-2][0-9]:[0-5][0-9]"
+# # print(re.findall(reg1, st))
+#
+# print(re.findall(reg, s))
+
+# d = "Цифры: 79, +12, -435, 0.013"
+# # print(re.findall(r"[+-]?\d+\.?\d*", d))
+# print(re.findall(r"[+-]?\d+[.?\d]*", d))
+
+# d = "05-03-1987"
+#
+# print("Дата рождения:", re.sub(r"\s#.*","", d))
+
+# st = "author=Пушкин А.С.; title = Евгений Онегин; price =200; year= 1831"
+# # reg = r"\w+\s*=\s*\w+[\s\w.]*"
+# reg = r"\w+\s*=[^;]+"
+# print(re.findall(reg, st))
+# print(re.split(r";\s+", st))
+
+# s1 = "12 сентября 2025 года 545435344"
+# # reg1 = r"\d{2,4}?"  # reg1 = r"\d{2}"
+# # reg1 = r"\d{2}"
+# reg1 = r"\d{,4}"
+# # # reg1 = r"\d{2,}"
+# # reg1 = r"\d{4}"
+# print(re.findall(reg1, s1))
+
+# st = "+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 74994564578"
+# reg1 = r"\+?7\d{10}"
+# print(re.findall(reg1, st))
+
+
+# def validate_login(login):
+#     return re.findall(r"^[A-Za-z0-9_-]{3,16}$", login)
+#
+#
+# print(validate_login("masfdfd"))
+
+# print(re.findall(r"\w+", "12 + й"))
+# print(re.findall(r"\w+", "12 + й", flags=re.ASCII))
+
+
+# text = "hello world"
+# print(re.findall(r"\w\+", text, re.DEBUG))
+
+# reg = r"я"  # Поиск в конце
+# print(re.findall(reg, s, re.IGNORECASE))
+#
+# text = """
+# one
+# two
+# """
+
+# print(re.findall(r"one.\w+", text))
+# print(re.findall(r"one.\w+", text, re.DOTALL))
+
+# print(re.findall(r"one$", text))
+# print(re.findall(r"one$", text, re.MULTILINE))
+
+# print(re.findall("""[a-z.-]+
+#  @
+#  [a-z.-]  # part1
+#  +        # part2
+#  """, "test@mail.com", re.VERBOSE))  # Игнорирует комментарий
+
+
+# text = """Python,
+# python,
+# PYTHON
+# """
+#
+# reg1 = "(?im)^python"
+# print(re.findall(reg1, text))
+
+# text = "<body>Пример жадного соответствия регулярных выражений</body>"
+# print(re.findall("<.*?>", text))
+
+
+# *?, +?, ??+
+# {m,n}?, {,n}?, {m,}?
+
+# Занятие 15
+
+# s = "Петр, Ольга и Виталий отлично учатся!"
+# reg = "Петр|Ольга|Виталий|Виктор"
+# print(re.findall(reg, s))
+
+# s = "int = 4, float = 4.0f, double = 8.0"
+# reg = r"\w+\s*=\s*\d[.\w+]*"
+# print(re.findall(reg, s))
+
+# s = "int = 4, float = 4.0f, double = 8.0"
+# # reg = r"int\s*=\s*\d[.\w+]*|float\s*=\s*\d[.\w+]*"
+# # reg = r"(?:int|float)\s*=\s*\d[.\w+]*"
+# reg = r"((int|float)\s*=\s*(\d[.\w+]*))"
+# print(re.search(reg, s).groups())
+# m = re.search(reg, s)
+# print(m[0])
+# print(m[1])  # Номер первой круглой скобке (наружная)
+# print(m[2])  # -||- вторая круглая скобка
+# print(m[3])  # -||- третья круглая скобка
+#
+# # print(re.findall(reg, s))
+
+
+# s = "5 + 7*2 - 4"
+# reg = r"\s*([+*-])\s*"
+# print(re.split(reg, s))
+
+# a = "31-01-2021"
+# pattern = r"(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19[0-9][0-9]|20[0-9][0-9]"  # [12] - или 1 или 2
+# print(re.findall(pattern, a))
+
+# s = "Самолёт прилетает 10/23/2025. Будем рады вас видеть после 10/24/2025"
+# reg = r"(\d{2})/(\d{2})/(\d{4})"
+# print(re.sub(reg, r"\2.\1.\3", s))
+
+# Рекурсия
+
+
+# def elevator(n):  # 5, 4, 3, 2, 1, 0
+#     if n == 0:
+#         print("Вы в подвале")
+#         return
+#     print("=>", n)
+#     elevator(n - 1)  # стек: 5 4 3 2 1
+#     print(n, end=" ")
+#
+#
+# n1 = 5
+# elevator(n1)
+
+
+# Занятие 16
 
