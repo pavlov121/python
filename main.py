@@ -772,6 +772,8 @@
 
 import random
 import re
+from gc import get_count
+
 
 # lst = [random.randint(0, 100) for i in range(10)]
 # print(lst)
@@ -2302,42 +2304,42 @@ import re
 # print(os.path.isfile(r"nested1/nested2/nested3/test3.txt"))  # К файлу
 
 
-import os.path
+# import os.path
 
 
 # dirs = [r"Work\F1", r"Work\F2\F21"]
 # for d in dirs:
 #     os.makedirs(d)
 
-files = {
-    r"Work": ["w.txt"],
-    r"Work\F1": ["f11.txt", "f12.txt", "f13.txt"],
-    r"Work\F2\F21": ["f211.txt", "f212.txt"]
-}
-
-for d, f in files.items():
-    for file in f:
-        file_path = os.path.join(d, file)
-        open(file_path, "w").close()
-
-files_with_text = [r"Work\w.txt", r"Work\F1\f12.txt", r"Work\F2\F21\f211.txt", r"Work\F2\F21\f212.txt"]
-
-for file in files_with_text:
-    with open(file, "w") as f:
-        f.write(f"Какой-то текст в файле {file}")
-
-
-def print_tree(root, topdown):
-    print(f"Обход {root} {"сверху вниз" if topdown else "снизу вверх"}")
-    for root, dirs, my_files in os.walk(root, topdown):
-        print(root)
-        print(dirs)
-        print(my_files)
-    print("-" * 50)
-
-
-print_tree("Work", False)
-print_tree("Work", True)
+# files = {
+#     r"Work": ["w.txt"],
+#     r"Work\F1": ["f11.txt", "f12.txt", "f13.txt"],
+#     r"Work\F2\F21": ["f211.txt", "f212.txt"]
+# }
+#
+# for d, f in files.items():
+#     for file in f:
+#         file_path = os.path.join(d, file)
+#         open(file_path, "w").close()
+#
+# files_with_text = [r"Work\w.txt", r"Work\F1\f12.txt", r"Work\F2\F21\f211.txt", r"Work\F2\F21\f212.txt"]
+#
+# for file in files_with_text:
+#     with open(file, "w") as f:
+#         f.write(f"Какой-то текст в файле {file}")
+#
+#
+# def print_tree(root, topdown):
+#     print(f"Обход {root} {"сверху вниз" if topdown else "снизу вверх"}")
+#     for root, dirs, my_files in os.walk(root, topdown):
+#         print(root)
+#         print(dirs)
+#         print(my_files)
+#     print("-" * 50)
+#
+#
+# print_tree("Work", False)
+# print_tree("Work", True)
 
 
 # Work\w.txt
@@ -2347,3 +2349,512 @@ print_tree("Work", True)
 # Work\F2\F21\f211.txt
 # Work\F2\F21\f212.txt
 
+# import os
+# import time
+#
+# path = r"main.py"
+#
+# kb = os.path.getsize(path)  # Размер документа (В байтах)
+#
+# print(kb // 1024)  # В Кбайтах
+#
+# kb = os.path.getsize(path)
+#
+# atime = os.path.getatime(path)  # Дата последнего доступа к документу
+#
+# ctime = os.path.getctime(path)  # Время создания файла (последнего изменения файла)
+#
+# mtime = os.path.getmtime(path)  # Время последнего изменения файла
+#
+# print(atime)
+# print(ctime)
+# print(mtime)
+#
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(atime)))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(ctime)))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(mtime)))
+
+# ООП
+
+# class Point:
+#     """Класс для предоставления координат точек на плоскости"""
+#     x = 1
+#     y = 2
+#
+#     def set_coords(self, x1, y1):
+#         self.x = x1
+#         self.y = y1
+#         print(self.__dict__)
+#
+#
+# p1 = Point()  # Экземпляр класса
+# p1.x = 100
+# p1.y = 200
+# # print(p1.x, p1.y)
+# # print(p1.__dict__)  # Возвращает в виде словаря набор элементов класса (Покажет значения, поскольку переменные
+# # были переопределены)
+#
+# p2 = Point()
+# # print(p2.x, p2.y)
+# # print(p2.__dict__)
+# #
+# # print(Point.__dict__)
+# # print(Point.__doc__)
+# Point.set_coords(p1, 111, 112)  # Способ вызова метода
+#
+# p1.set_coords(8, 200)
+# p2.set_coords(10, 20)
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = "00-00-00"
+#     country = "country"
+#     city = "city"
+#     address = "street, house"
+#
+#     def print_info(self):
+#         print(" Персональные данные ".center(40, "*"))
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\nСтрана: {self.country}"
+#               f"\nГород: {self.city}\nДомашний адрес: {self.address}")
+#         print("=" * 40)
+#
+#     def input_info(self, name1, birthday1, phone1, country1, city1, address1):
+#         self.name = name1
+#         self.birthday = birthday1
+#         self.phone = phone1
+#         self.country = country1
+#         self.city = city1
+#         self.address = address1
+#
+#     def set_name(self, name):  # Устанавливаем новое имя
+#         self.name = name
+#
+#     def get_name(self):  # Получаем имя
+#         return self.name
+#
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1A")
+# h1.print_info()
+# h1.set_name("Алексей")
+# print(h1.get_name())
+
+# class Person:
+#     skill = 10  # Статическое свойство
+#     # name = ""
+#     # surname = ""
+#
+#     def __init__(self, name, surname):
+#         self.name = name  # Динамические свойства (перезаписываются)
+#         self.surname = surname
+#         print("Инициализация")
+#
+#     def __del__(self):  # Разрыв ссылки на экземпляр
+#         print("Финализатор (Деструктор)")
+#
+#     def print_info(self):
+#         print("\nДанные сотрудника:", self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Квалификация сотрудника:", self.skill)
+#
+#
+# p1 = Person("Виктор", "Резник")
+# p1.print_info()
+# p1.add_skill(3)
+# # del p1
+# p1 = 5
+#
+# p2 = Person("Анна", "Долгих")
+# p2.print_info()
+# p2.add_skill(2)
+
+# class Point:
+#     count = 0
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         Point.count += 1  # Счётчик создания классов
+#         # self.count += 1
+#
+#
+# p1 = Point(1, 2)
+# print(Point.count)
+# p2 = Point(10, 20)
+# print(Point.count)
+# p3 = Point(100, 200)
+# print(Point.count)
+# print(p1.count)
+# print(p2.count)
+
+# print(p1.__dict__)
+# print(p2.__dict__)
+# print(p3.__dict__)
+
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):  # Может располагаться где угодно в классе
+#         self.name = name
+#         print("Инициализация робота:", self.name)
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(self.name, "Выключается!")
+#         Robot.k -= 1
+#
+#     def say_hi(self):
+#         print("Приветствую! Меня зовут:", self.name)
+#
+#         if Robot.k == 0:
+#             print(self.name, "Был последним")
+#         else:
+#             print("Работающих роботов осталось:", Robot.k)
+#
+#
+# droid1 = Robot("R2-D2")
+# droid1.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# droid2 = Robot("C-3PO")
+# droid2.say_hi()
+#
+# droid3 = Robot("C-4PO")
+# droid3.say_hi()
+#
+# print("Численность роботов:", Robot.k)
+#
+# print("\nРоботы могут проделать какую-либо работу.\n")
+#
+# print("Завершили работу")
+#
+# del droid1
+# del droid2
+# del droid3
+# print("Численность роботов:", Robot.k)
+
+# class Point:
+#     __slots__ = "__x", "__y"  # Разрешили что свойства будут внутри класса
+#
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check(x) and Point.__check(y):
+#             self.__x = x
+#             self.__y = y
+#
+#     def get_coord(self):
+#         return self.__x, self.__y
+#
+#     def __check(c):
+#         return isinstance(c, (int, float))
+#
+#     def set_coord(self, x, y):
+#         if isinstance(x, int) or isinstance(x, float) and isinstance(y, int) or isinstance(y, float):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#
+# p1 = Point(5, 10)
+# # p1.z = 3  # Добавлять свойства!
+# # print(p1.z)
+# # p1.__x = "abc"  # Создаём новые два свойства
+# # p1.__y = "abc"
+# # print(p1.__dict__)
+# # print(p1.__x, p1.__y)
+# print(p1.get_coord())
+#
+# p1._Point__x = 111
+# print(p1.__dict__)
+
+
+# class Point:
+#
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __set_x(self, x):
+#         print("Вызов __set_x")
+#         self.__x = x
+#
+#     def __get_x(self):
+#         print("Вызов __get_x")
+#         return self.__x
+#
+#     def __del_x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     x = property(__get_x, __set_x)
+#
+#
+# p1 = Point(5, 10)
+# print(p1.x)
+# p1.x = 50
+# print(p1.x)
+# del p1.x
+
+
+# class Point:
+#
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     @property  # геттер
+#     def x(self):
+#         print("Вызов __get_x")
+#         return self.__x
+#
+#     @x.setter  # сеттер
+#     def x(self, x):
+#         if isinstance(x, int):
+#             self.__x = x
+#         else:
+#             print("Не корректный тип данных")
+#
+#     # @x.deleter
+#     # def x(self):
+#     #     print("Удаление свойства")
+#     #     del self.__x
+#
+#     # x = property(__get_x, __set_x)
+#
+#
+# p1 = Point(5, 10)
+# # print(p1.x)
+# p1.x = "50"
+# print(p1.x)
+# # del p1.x
+
+# class KgToPounds:
+#     def __init__(self, kg):
+#         self.__kg = kg  # _KgToPounds__kg
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#
+#     @kg.setter
+#     def kg(self, new_kg):
+#         if isinstance(new_kg, (int, float)):
+#             self.__kg = new_kg
+#         else:
+#             print("Килограммы задаются только числами!")
+#
+#     def to_pound(self):
+#         return self.__kg * 2.205
+#
+#
+# w = KgToPounds(12)
+# print(w.kg, "кг =>", w.to_pound(), "фунтов")
+# w.kg = 41
+# print(w.kg, "кг =>", w.to_pound(), "фунтов")
+# w.kg = "Десять"
+
+
+# class Person:
+#     def __init__(self, name, age):
+#         self.__name = name
+#         self.__age = age
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self, name1):
+#         if isinstance(name1, str):
+#             self.__name = name1
+#         else:
+#             print("Не строка!")
+#
+#     @property
+#     def age(self):
+#         return self.__age
+#
+#     @age.setter
+#     def age(self, age1):
+#         if isinstance(age1, int):
+#             self.__age = age1
+#         else:
+#             print("Не число!")
+#
+#     @name.deleter
+#     def name(self):
+#         del self.__name
+#
+#     @age.deleter
+#     def age(self):
+#         del self.__age
+#
+#
+# person = Person("Irina", 26)
+# print(person.__dict__)
+# person.name = "Igor"
+# print(person.__dict__)
+# person.age = 31
+# print(person.__dict__)
+# del person.name
+# print(person.__dict__)
+
+
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#         Point.__count += 1
+#
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# print(Point.__dict__)
+# print(Point.get_count())
+
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#         Point.__count += 1
+#
+#     # @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#     get_count = staticmethod(get_count)
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# print(Point.__dict__)
+# print(Point.get_count())
+
+# def inc(x):
+#     return x + 1
+#
+#
+# def dec(x):
+#     return x - 1
+#
+#
+# print(inc(10), dec(10))
+
+# class Change:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+#     def print_info(self):
+#         print("Печать инфо", self.name)
+#
+#
+# print(Change.inc(10), Change.dec(10))
+
+# class Numbers:
+#     @staticmethod
+#     def max(a, b, c, d):
+#         mx = a  # 3
+#         if b > mx:  # 5 > 3
+#             mx = b  # 5
+#         if c > mx:  # 7 > 5
+#             mx = c  # 7
+#         if d > mx:  # 9 > 7
+#             mx = d  # 9
+#         return mx
+#
+#     @staticmethod
+#     def min(*args):
+#         mn = args[0]
+#         for i in args:
+#             if i < mn:
+#                 mn = i
+#         return mn
+#
+#     @staticmethod
+#     def average(*args):
+#         return sum(args) / len(args)
+#
+#     @staticmethod
+#     def factorial(n):
+#         fact = 1
+#         for i in range(1, n + 1):
+#             fact *= i
+#         return fact
+#
+#
+# print(Numbers.max(3, 5, 7, 9))
+# print(Numbers.min(3, 5, 7, 9))
+# print(Numbers.average(3, 5, 7, 9))
+# print(Numbers.factorial(0))
+
+# "23.10.2025" => 2025-10-23
+
+class Date:
+    def __init__(self, day, month, year):
+        self.day = day
+        self.month = month
+        self.year = year
+
+    def string_to_db(self):
+        return f"{self.year}-{self.month}-{self.day}"
+
+    @classmethod
+    def from_string(cls, string_date):
+        day, month, year = map(int, string_date.split("."))
+        date = cls(day, month, year)
+        return date
+
+    @staticmethod
+    def is_date_valid(string_data):
+        if string_data.count(".") == 2:
+            day, month, year = map(int, string_data.split("."))
+            return day <= 31 and month <= 12 and year <= 3999
+
+
+dates = [
+    "23.10.2025",
+    "30-10-2025",
+    "01,10,2025",
+    "12.10.2025",
+]
+
+for i in dates:
+    if Date.is_date_valid(i):
+        date1 = Date.from_string(i)
+        print(date1.string_to_db())
+    else:
+        print("Не правильная дата или формат строки с датой")
+
+
+# string_date = "23.10.2025"
+# day, month, year = map(int, string_date.split("."))  # [23, 10, 2023]
+# # print(day, month, year)
+# date = Date(day, month, year)
+# print(date.string_to_db())
+
+
+# date1 = Date.from_string("23.10.2025")
+# print(date1.string_to_db())
